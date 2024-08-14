@@ -1,6 +1,8 @@
 
 # Excepciones 
 
+# excepciones.py
+
 class ErrorTipoDato(Exception):
     pass
 
@@ -18,6 +20,13 @@ class ErrorEstadoInmueble(Exception):
 
 class ErrorEstadoCivil(Exception):
     pass
+
+class ErrorValorInmuebleBajo(Exception):
+    pass
+
+class ErrorValorInmuebleAlto(Exception):
+    pass
+
 
 def calcularCuotaHipotecaInversa(valor_inmueble, estado_inmueble, estado_civil, edad_propietario, edad_conyuge, tasa_interes):
     # Verificación de tipos de datos
