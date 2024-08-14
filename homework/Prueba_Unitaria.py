@@ -90,9 +90,9 @@ class HipotecaInversaTest(unittest.TestCase):
         valor_inmueble = 100000000
         estado_inmueble = "bueno"
         estado_civil = "casado"
-        edad_propietario = 99
-        edad_conyuge = 98
-        tasa_interes = -0.05 #tasa negativa
+        edad_propietario = 90
+        edad_conyuge = 85  # edad limite es 85 y el conyugue esta al limite
+        tasa_interes = 0.05 
         #variables de salida
         cuota_esperada = 165683.5518
         resultado = hipoteca_inversa.calcularCuotaHipotecaInversa(valor_inmueble, estado_inmueble, estado_civil, edad_propietario, edad_conyuge, tasa_interes)
@@ -104,7 +104,7 @@ class HipotecaInversaTest(unittest.TestCase):
         estado_inmueble = "excelente"
         estado_civil = "casado"
         edad_propietario = 80  
-        edad_conyuge = 18 #"Edad muy baja"
+        edad_conyuge = 18 #"Edad muy baja"  # demasiado joven para pedir una hipoteca
         tasa_interes = 0.07
         #variables de salida
         cuota_esperada = 500000
@@ -128,11 +128,11 @@ class HipotecaInversaTest(unittest.TestCase):
 
     def test_Extraordinario_4(self):
          # variables de entradas
-        valor_inmueble = 100000000
+        valor_inmueble = 1000        # valor del inmuble demasiado bajo
         estado_inmueble = "excelente"
-        estado_civil = "soltero"
+        estado_civil = " Casado"
         edad_propietario = 70
-        edad_conyuge = 25  # esta soltero
+        edad_conyuge = 25  #
         tasa_interes = 0.07
         #variables de salida
         cuota_esperada = 166666.6667
@@ -144,8 +144,8 @@ class HipotecaInversaTest(unittest.TestCase):
         valor_inmueble = 90000000
         estado_inmueble = "bueno"
         estado_civil = "casado"
-        edad_propietario = 150  # Edad irrealmente alta
-        edad_conyuge = 165  
+        edad_propietario = 70 #
+        edad_conyuge = 85   #edad del esposo  muy menor al de la mujer
         tasa_interes = 0.07
         #variables de salida
         cuota_esperada = 225000
@@ -154,12 +154,12 @@ class HipotecaInversaTest(unittest.TestCase):
 
     def test_Extraordinario_6(self):
          # variables de entradas
-        valor_inmueble = 800000000
+        valor_inmueble = 900000000  # El valor del inmuble es demasido alto y esta muy regular
         estado_inmueble = "regular"
         estado_civil = "casado"
         edad_propietario = 70
         edad_conyuge = 65  
-        tasa_interes = 25 # tasa de interes muy alta
+        tasa_interes = 0.1
         #variables de salida
         cuota_esperada = 1333333.333
         resultado = hipoteca_inversa.calcularCuotaHipotecaInversa(valor_inmueble, estado_inmueble, estado_civil, edad_propietario, edad_conyuge, tasa_interes)
