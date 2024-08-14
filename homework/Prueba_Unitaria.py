@@ -7,14 +7,14 @@ class HipotecaInversaTest(unittest.TestCase):
 
     def test_Normal_1(self):
         # variables de entradas
-        valor_inmueble = 300000000
+        valor_inmueble = 500000000
         estado_inmueble = "excelente"
         estado_civil = "casado"
         edad_propietario = 70
         edad_conyuge = 68
-        tasa_interes = 0.07
+        tasa_interes = 0.5
         #variables de salida
-        cuota_esperada = 625000
+        cuota_esperada = 1041666.667
         resultado = hipoteca_inversa.calcularCuotaHipotecaInversa(valor_inmueble, estado_inmueble, estado_civil, edad_propietario, edad_conyuge, tasa_interes)
         self.assertEqual(round(resultado, 2), cuota_esperada)
 
@@ -25,7 +25,7 @@ class HipotecaInversaTest(unittest.TestCase):
         estado_civil = "casado"
         edad_propietario = 72
         edad_conyuge = 70
-        tasa_interes = 0.07
+        tasa_interes = 0.5
         #variables de salida
         cuota_esperada = 1000000
         resultado = hipoteca_inversa.calcularCuotaHipotecaInversa(valor_inmueble, estado_inmueble, estado_civil, edad_propietario, edad_conyuge, tasa_interes)
@@ -46,40 +46,40 @@ class HipotecaInversaTest(unittest.TestCase):
 
     def test_Normal_4(self):
          # variables de entradas
-        valor_inmueble = 90000000
+        valor_inmueble = 300000000
         estado_inmueble = "regular"
         estado_civil = "casado"
         edad_propietario = 70
         edad_conyuge = 68
-        tasa_interes = 0.05
+        tasa_interes = 0.5
         #variables de salida
-        cuota_esperada = 150000
+        cuota_esperada = 500000
         resultado = hipoteca_inversa.calcularCuotaHipotecaInversa(valor_inmueble, estado_inmueble, estado_civil, edad_propietario, edad_conyuge, tasa_interes)
         self.assertEqual(round(resultado, 2), cuota_esperada)
 
     def test_Normal_5(self):
          # variables de entradas
-        valor_inmueble = 100000000
+        valor_inmueble = 350000000
         estado_inmueble = "excelente"
         estado_civil = "casado"
         edad_propietario = 75
         edad_conyuge = 65 
         tasa_interes = 0.06
         #variables de salida
-        cuota_esperada = 208333.3333
+        cuota_esperada = 625000
         resultado = hipoteca_inversa.calcularCuotaHipotecaInversa(valor_inmueble, estado_inmueble, estado_civil, edad_propietario, edad_conyuge, tasa_interes)
         self.assertEqual(round(resultado, 2), cuota_esperada)
 
     def test_Normal_6(self):
          # variables de entradas
-        valor_inmueble = 500000000
+        valor_inmueble = 280000000
         estado_inmueble = "bueno"
         estado_civil = "casado"
         edad_propietario = 80
         edad_conyuge = 70 
         tasa_interes = 0.08
         #variables de salida
-        cuota_esperada = 1250000
+        cuota_esperada = 700000
         resultado = hipoteca_inversa.calcularCuotaHipotecaInversa(valor_inmueble, estado_inmueble, estado_civil, edad_propietario, edad_conyuge, tasa_interes)
         self.assertEqual(round(resultado, 2), cuota_esperada)
 
@@ -87,14 +87,15 @@ class HipotecaInversaTest(unittest.TestCase):
 
     def test_Extraordinario_1(self):
          # variables de entradas
-        valor_inmueble = 100000000
+        valor_inmueble =  650000000
         estado_inmueble = "bueno"
         estado_civil = "casado"
         edad_propietario = 90
         edad_conyuge = 85  # edad limite es 85 y el conyugue esta al limite
         tasa_interes = 0.05 
         #variables de salida
-        cuota_esperada = 250000
+        cuota_esperada = 1625000
+
         resultado = hipoteca_inversa.calcularCuotaHipotecaInversa(valor_inmueble, estado_inmueble, estado_civil, edad_propietario, edad_conyuge, tasa_interes)
         self.assertEqual(round(resultado, 2), cuota_esperada)
 
@@ -122,39 +123,38 @@ class HipotecaInversaTest(unittest.TestCase):
         #variables de salida
         cuota_esperada = 1041666.667
 
-
         resultado = hipoteca_inversa.calcularCuotaHipotecaInversa(valor_inmueble, estado_inmueble, estado_civil, edad_propietario, edad_conyuge, tasa_interes)
         self.assertEqual(round(resultado, 2), cuota_esperada)
 
     def test_Extraordinario_4(self):
          # variables de entradas
-        valor_inmueble = 1000        # valor del inmuble demasiado bajo
+        valor_inmueble = 200000000      # valor del inmuble demasiado bajo. esta en el limite
         estado_inmueble = "excelente"
         estado_civil = " Casado"
         edad_propietario = 70
         edad_conyuge = 70  #
         tasa_interes = 0.07
         #variables de salida
-        cuota_esperada = 2.777777778
+        cuota_esperada = 555555.5556
         resultado = hipoteca_inversa.calcularCuotaHipotecaInversa(valor_inmueble, estado_inmueble, estado_civil, edad_propietario, max(0, edad_conyuge), tasa_interes)
         self.assertEqual(round(resultado, 2), cuota_esperada)
 
     def test_Extraordinario_5(self):
          # variables de entradas
-        valor_inmueble = 90000000
+        valor_inmueble = 500000000
         estado_inmueble = "bueno"
         estado_civil = "casado"
         edad_propietario = 70 #
-        edad_conyuge = 85   #edad del esposo  muy menor al de la mujer
+        edad_conyuge = 85   # diferencia de edad considerable  entre el conyugue y el propietario  
         tasa_interes = 0.07
         #variables de salida
-        cuota_esperada = 225000
+        cuota_esperada = 1250000
         resultado = hipoteca_inversa.calcularCuotaHipotecaInversa(valor_inmueble, estado_inmueble, estado_civil, min(120, edad_propietario), edad_conyuge, tasa_interes)
         self.assertEqual(round(resultado, 2), cuota_esperada)
 
     def test_Extraordinario_6(self):
          # variables de entradas
-        valor_inmueble = 900000000  # El valor del inmuble es demasido alto y esta muy regular
+        valor_inmueble = 900000000  # El valor del inmuble es demasido alto y esta en el limite, ademas es regular pero aun asi tiene ese valor
         estado_inmueble = "regular"
         estado_civil = "casado"
         edad_propietario = 70
@@ -220,7 +220,7 @@ class HipotecaInversaTest(unittest.TestCase):
                 hipoteca_inversa.calcularCuotaHipotecaInversa(valor_inmueble, estado_inmueble, estado_civil, edad_propietario, edad_conyuge, tasa_interes)
 
     def test_Error_6(self):
-            valor_inmueble = 200000000
+            valor_inmueble = 250000000
             estado_inmueble = "excelente"
             estado_civil = "casado"
             edad_propietario = ""       # edad del propetario vacia
@@ -257,9 +257,33 @@ class HipotecaInversaTest(unittest.TestCase):
             estado_civil = "casado"
             edad_propietario = 70
             edad_conyuge = 68
-            tasa_interes = 6  # Tasa de interés es mayor que 5
+            tasa_interes = 2  # Tasa de interés es mayor que 5
             with self.assertRaises(hipoteca_inversa.ErrorTasaInteres):
                 hipoteca_inversa.calcularCuotaHipotecaInversa(valor_inmueble, estado_inmueble, estado_civil, edad_propietario, edad_conyuge, tasa_interes)
+
+    def test_Error_10(self):
+            valor_inmueble = 950000000 # valor del inmueble supero el valor limite 
+            estado_inmueble = "excelente"
+            estado_civil = "casado"
+            edad_propietario = 70
+            edad_conyuge = 68
+            tasa_interes = 6  
+            with self.assertRaises(hipoteca_inversa.ErrorValorInmuebleAlto):
+                hipoteca_inversa.calcularCuotaHipotecaInversa(valor_inmueble, estado_inmueble, estado_civil, edad_propietario, edad_conyuge, tasa_interes)
+
+
+    def test_Error_11(self):
+            valor_inmueble = 150000000  #valor del inmueble supero el valor limite  
+            estado_inmueble = "bueno"
+            estado_civil = "casado"
+            edad_propietario = 70
+            edad_conyuge = 68
+            tasa_interes = 0.5
+            with self.assertRaises(hipoteca_inversa.ErrorValorInmuebleBajo):
+                hipoteca_inversa.calcularCuotaHipotecaInversa(valor_inmueble, estado_inmueble, estado_civil, edad_propietario, edad_conyuge, tasa_interes)
+
+     
+
 
     if __name__ == '__main__':
         unittest.main()

@@ -1,8 +1,6 @@
 
 # Excepciones 
 
-# excepciones.py
-
 class ErrorTipoDato(Exception):
     pass
 
@@ -33,6 +31,11 @@ def calcularCuotaHipotecaInversa(valor_inmueble, estado_inmueble, estado_civil, 
     if not isinstance(valor_inmueble, (int, float)) or not isinstance(edad_propietario, int) or not isinstance(edad_conyuge, int) or not isinstance (tasa_interes,(int,float)):
         raise ErrorTipoDato("Tipo de dato incorrecto")
 
+    if valor_inmueble < 200000000:
+        raise ErrorValorInmuebleBajo("El valor del inmueble es demasiado bajo, debe ser mayor o igual a 200 millones")
+
+    if valor_inmueble > 900000000:
+        raise ErrorValorInmuebleAlto("El valor del inmueble es demasiado alto, debe ser menor o igual a 900 millones")
     # Verificación de valores
     if valor_inmueble <= 0:
         raise ErrorValorInmueble("El valor del inmueble debe ser mayor que cero")
@@ -43,7 +46,7 @@ def calcularCuotaHipotecaInversa(valor_inmueble, estado_inmueble, estado_civil, 
     if edad_minima >85 :
         raise ErrorEdadInvalida("Supero el limite de edad")
 
-    # Aquí se agrega la verificación de tasa de interés igual a 0
+    # verificación de tasa de interés igual a 0
     if tasa_interes == 0:
         raise ErrorTasaInteres("Tasa de interés no puede ser 0")
     
